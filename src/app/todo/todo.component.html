@@ -32,7 +32,11 @@
             {{ todo.task }}
           </p>
 
-          <form *ngIf="showIndex === i" (submit)="resetShowIndex()">
+          <form
+            class="editBox task"
+            *ngIf="showIndex === i"
+            (submit)="resetShowIndex()"
+          >
             <input type="text" name="update" [(ngModel)]="todo.task" />
           </form>
 
