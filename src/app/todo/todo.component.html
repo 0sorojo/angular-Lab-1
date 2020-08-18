@@ -33,11 +33,16 @@
           </p>
 
           <form
-            class="editBox task"
+            class="update-form"
             *ngIf="showIndex === i"
             (submit)="resetShowIndex()"
           >
-            <input type="text" name="update" [(ngModel)]="todo.task" />
+            <input
+              class="update-form"
+              type="text"
+              name="update"
+              [(ngModel)]="todo.task"
+            />
           </form>
 
           <button class="delete" (click)="removeTask(i)">X</button>
