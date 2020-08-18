@@ -25,10 +25,11 @@ export class TodoComponent implements OnInit {
 
   searchTerm: string;
 
+  showIndex: number;
+
   constructor() {}
 
   addTask(form: NgForm) {
-    console.log(form);
     let newTask: Todo = {
       task: form.value.task,
       complete: false,
@@ -53,11 +54,19 @@ export class TodoComponent implements OnInit {
     if (!this.searchTerm) {
       return this.todos;
     } else {
-      return this.todos.filter((gottaGetDones) => {
-        let currentTodo = gottaGetDones.task.toLowerCase().trim();
+      return this.todos.filter((gottaGetDone) => {
+        let currentTodo = gottaGetDone.task.toLowerCase().trim();
         return currentTodo.includes(this.searchTerm);
       });
     }
+  }
+
+  setShowIndex(index: number) {
+    this.showIndex = index;
+  }
+
+  resetShowIndex() {
+    this.showIndex = undefined;
   }
 
   ngOnInit(): void {}

@@ -11,7 +11,7 @@
         ngModel
       />
     </form>
-
+    <p *ngIf="todos.length === 0">Enter some To-Dos</p>
     <ol class="todo-list">
       <li *ngFor="let todo of filter(); index as i">
         <div class="list-item-row">
@@ -23,9 +23,18 @@
             Completed
           </button>
 
-          <p class="task" [ngClass]="{ done: todo.complete }">
+          <p
+            *ngIf="showIndex !== i"
+            class="task"
+            [ngClass]="{ done: todo.complete }"
+            (click)="setShowIndex(i)"
+          >
             {{ todo.task }}
           </p>
+
+          <form *ngIf="showIndex === i" (submit)="resetShowIndex()">
+            <input type="text" name="update" [(ngModel)]="todo.task" />
+          </form>
 
           <button class="delete" (click)="removeTask(i)">X</button>
         </div>
